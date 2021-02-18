@@ -16,8 +16,7 @@ pipeline {
 
         stage('Rename_build_in_index') {
             steps {
-                def text = readFile file: "index.html"
-                text.replaceAll("REPLACE_ME", "${BUILD_NUMBER}")
+                sh 'sed -i 's~REPLACE_ME~'${BUILD_NUMBER}'~' index.html'
             }
         }
 
