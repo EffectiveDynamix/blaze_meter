@@ -22,7 +22,9 @@ pipeline {
 
         stage('Build_image') {
             steps {
-                docker.build("yonatanorr/blaze_meter")
+                script {
+                    docker.build("yonatanorr/blaze_meter")
+                }
             }
         }
     }
