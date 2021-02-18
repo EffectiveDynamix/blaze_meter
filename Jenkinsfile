@@ -16,7 +16,7 @@ pipeline {
 
         stage('Rename_build_in_index') {
             steps {
-                sh 'sed -i 's~REPLACE_ME~'${BUILD_NUMBER}'~' index.html'
+                sh "sed -i 's~REPLACE_ME~'${BUILD_NUMBER}'~' index.html"
             }
         }
 
