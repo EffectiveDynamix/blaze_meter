@@ -32,6 +32,9 @@ pipeline {
                 script {
                     sh 'kubectl apply -f deployment.yaml'
                 }
+                script {
+                    sh 'kubectl apply -f nginx_srv.yaml'
+                }
             }
         }
     }
