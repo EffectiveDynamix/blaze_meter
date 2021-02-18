@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: 7b192ef343d6
+        image: yonatanorr/blaze_meter:7b192ef343d6
         ports:
         - containerPort: 80
