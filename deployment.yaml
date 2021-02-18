@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-imagePullPolicy: Never
 spec:
   selector:
     matchLabels:
@@ -18,3 +17,4 @@ spec:
         image: blaze_meter
         ports:
         - containerPort: 80
+      imagePullPolicy: Never
