@@ -8,7 +8,7 @@ pipeline {
 
         stage('Rename build in index') {
             def text = readFile file: "index.html"
-            text.replaceAll("BUILD_NUMBER", "${BUILD_NUMBER}")
+            text.replaceAll("REPLACE_ME", "${BUILD_NUMBER}")
         }
 
         stage('Build image') {
