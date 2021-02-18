@@ -27,5 +27,12 @@ pipeline {
                 }
             }
         }
+        stage('Build_image') {
+            steps {
+                script {
+                    kubernetesDeploy(configs: "deploy,emt.yml")
+                }
+            }
+        }
     }
 }
