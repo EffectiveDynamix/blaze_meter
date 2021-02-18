@@ -2,9 +2,9 @@ pipeline {
     environment {
         registry = "yonatanor/blaze"
         registryCredential = 'dockerHub'
+        customImage = ''
     }
     agent any
-    def customImage
     stages {
         stage('Clean_workspace') {
             steps {
