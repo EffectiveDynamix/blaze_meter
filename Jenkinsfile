@@ -23,7 +23,7 @@ pipeline {
         stage('Build_image') {
             steps {
                 script {
-                    docker.build()
+                    docker.build("blaze_meter", "Dockerfile")
                 }
             }
         }
