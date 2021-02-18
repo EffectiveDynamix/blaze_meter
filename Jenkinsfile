@@ -41,13 +41,6 @@ pipeline {
                 }
             }
         }
-        stage('Kube_Clean') {
-            steps {
-                script {
-                    sh 'kubectl delete deployments nginx-deployment'
-                }
-            }
-        }
         stage('Kube_Deploy') {
             steps {
                 script {
