@@ -1,26 +1,17 @@
 pipeline {
-    agent any 
+    agent any
     stages {
         stage('Clone repository') {
             /* Let's make sure we have the repository cloned to our workspace */
-
             checkout scm
         }
 
-        stage('Build image') {
-            /* This builds the actual image; synonymous to
-            * docker build on the command line */
-
-            dockerImage = docker.build nginx + ":$BUILD_NUMBER"
+        stage('Rename build in index') {
+            sh 'sed -i 's~REPLACE_ME~'${BUILD_NUMBER}'~' index.html'
         }
 
-        stage('Test image') {
-            /* Ideally, we would run a test framework against our image.
-            * For this example, we're using a Volkswagen-type approach ;-) */
-
-            dockerImage.inside {
-                sh 'echo "Tests passed"'
-            }
+        stage('Build image') {
+            docker.build("yonatanorr/blaze_meter")
         }
     }
 }
