@@ -27,10 +27,10 @@ pipeline {
                 }
             }
         }
-        stage('Build_image') {
+        stage('Kube_Deploy') {
             steps {
                 script {
-                    kubernetesDeploy(configs: "deploy,emt.yml")
+                    kubernetesDeploy(configs: "deployment.yml")
                 }
             }
         }
