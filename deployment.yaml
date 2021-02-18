@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: blaze_meter
+        image: yonatanor/blaze
         ports:
         - containerPort: 80

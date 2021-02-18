@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        registry = "yonatanor/blaze"
+        registryCredential = 'dockerHub'
+    }
     agent any
     stages {
         stage('Clean_workspace') {
@@ -23,7 +27,7 @@ pipeline {
         stage('Build_image') {
             steps {
                 script {
-                    docker.build("blaze_meter")
+                    docker.build registry + ":$BUILD_NUMBER"
                 }
             }
         }
