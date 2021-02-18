@@ -27,6 +27,15 @@ pipeline {
                 }
             }
         }
+        stage('Deploy our image') {
+            steps{
+                script {
+                    docker.withRegistry( '', dockerHub ) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
         stage('Kube_Deploy') {
             steps {
                 script {
