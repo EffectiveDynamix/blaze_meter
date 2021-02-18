@@ -27,16 +27,9 @@ pipeline {
         stage('Build_image') {
             steps {
                 script {
-                    docker.build registry + ":$BUILD_NUMBER"
-                }
-            }
-        }
-        stage('Deploy our image') {
-            steps{
-                script {
-                    docker.withRegistry( '', dockerHub ) {
-                        dockerImage.push()
-                    }
+                    def customImage = docker.build registry + ":$BUILD_NUMBER"
+                    customImage.push()
+                    customImage.push('latest')
                 }
             }
         }
