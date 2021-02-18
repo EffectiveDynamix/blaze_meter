@@ -1,5 +1,5 @@
 pipeline {
-    def app
+    agent any 
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -11,7 +11,7 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("yonatanorr/blaze_meter")
+        dockerImage = docker.build nginx + ":$BUILD_NUMBER"
     }
 
     stage('Test image') {
