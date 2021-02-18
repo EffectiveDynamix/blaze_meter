@@ -4,6 +4,7 @@ pipeline {
         registryCredential = 'dockerHub'
     }
     agent any
+    def customImage
     stages {
         stage('Clean_workspace') {
             steps {
@@ -23,13 +24,19 @@ pipeline {
                 sh "sed -i 's~REPLACE_ME~'${BUILD_NUMBER}'~' index.html"
             }
         }
-
         stage('Build_image') {
             steps {
                 script {
-                    def customImage = docker.build registry + ":$BUILD_NUMBER"
-                    customImage.push()
-                    customImage.push('latest')
+                    customImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
+        stage('upload image') {
+            steps{
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        customImage.push()
+                    }
                 }
             }
         }
