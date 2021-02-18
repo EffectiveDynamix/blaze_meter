@@ -30,7 +30,7 @@ pipeline {
         stage('Kube_Deploy') {
             steps {
                 script {
-                    kubernetesDeploy(configs: "deployment.yml")
+                    sh 'kubectl apply -f deployment.yml'
                 }
             }
         }
